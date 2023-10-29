@@ -8,7 +8,7 @@ const port = 3000;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var post = "";
+let post = [];
 
 app.get("/", (req, res) => {
   res.render("index.ejs");
@@ -22,8 +22,11 @@ app.post("/home", (req, res) => {
   const header = req.body.post_heading;
   const content = req.body.post_content;
 
-  post =
-    post + "<div><h1>" + header + "</h1>" + "<p>" + content + "</p> </div>";
+  const newPost = {
+    header: header,
+    content: content
+  }
+  post.push(newPost);
   const postData = {
     post: post
   }

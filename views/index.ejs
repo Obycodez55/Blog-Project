@@ -2,7 +2,15 @@
 
 <h1>There should be some posts here</h1>
 
-<% if (locals.post) { %>
-<section><%- post%></section>
-<% } %> 
+<section>
+  <% if (locals.post) { 
+  for (let i = 0; i < post.length; i++) {
+    const postIndex= post[i]; %>
+    <div>
+      <h1> <%= postIndex.header %> </h1>  
+      <p> <%= postIndex.content %> </p>
+    </div>
+ <% } }%>
+</section> 
+
 <%-include("partials/footer.ejs") %>
