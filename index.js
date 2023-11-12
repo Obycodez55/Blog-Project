@@ -1,9 +1,7 @@
-import express from "express";
-import expressLayout from "express-ejs-layouts";
-import { render } from "ejs";
-import * as dotenv from 'dotenv';
+require("dotenv").config();
 
-dotenv.config()
+const express = require("express");
+const expressLayout = require("express-ejs-layouts");
 
 const app = express();
 const PORT = 3000 || process.env.PORT;
@@ -16,9 +14,7 @@ app.set("layout", "./layout/main");
 app.set("view engine", "ejs");
 
 
-
-app.use("/", import("./server/routes/main"));
-routes.initialize(app);
+app.use("/", require("./server/routes/main"));
 
 
 app.listen(PORT, () => {
